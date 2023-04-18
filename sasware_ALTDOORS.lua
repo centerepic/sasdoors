@@ -1847,10 +1847,7 @@ end
 local oldnamecall; oldnamecall = hookmetamethod(game, '__namecall', function(self, ...)
     local Args = {...}
 
-    local OldNameCallMethod = getnamecallmethod()
-
-    if Library.flags.DisableEyes and workspace:FindFirstChild("Eyes") and self == MotorReplication then
-        setnamecallmethod(OldNameCallMethod)
+    if Library.flags.DisableEyes and game.FindFirstChild(workspace, "Eyes") and self == MotorReplication then
         Args[2] = -65
         return oldnamecall(self, table.unpack(Args))
     end
